@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.knockknock;
+package com.github.cc007.lightsaver.templates.knockknock;
 import java.io.*;
 import java.net.*;
 

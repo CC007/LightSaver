@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.knockknock;
+package com.github.cc007.lightsaver.templates.knockknock;
 
 public class KnockKnockProtocol {
 	private static final int WAITING = 0;

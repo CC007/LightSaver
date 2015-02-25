@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.hello;
+package com.github.cc007.lightsaver.templates.hello;
 
 import java.io.IOException;
 import java.net.DatagramPacket;

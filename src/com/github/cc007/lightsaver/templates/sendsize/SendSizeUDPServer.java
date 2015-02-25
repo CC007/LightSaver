@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.sendsize;
+package com.github.cc007.lightsaver.templates.sendsize;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

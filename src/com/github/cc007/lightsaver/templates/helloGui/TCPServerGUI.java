@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.helloGui;
+package com.github.cc007.lightsaver.templates.helloGui;
 
 import java.awt.Color;
 import java.io.DataInputStream;
