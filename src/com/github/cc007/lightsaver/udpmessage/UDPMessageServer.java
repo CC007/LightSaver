@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.connection;
+package com.github.cc007.lightsaver.udpmessage;
 
 import com.github.cc007.lightsaver.lightdetector.LightDetectorMessage;
 import java.io.IOException;

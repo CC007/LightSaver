@@ -1,8 +1,8 @@
 package com.github.cc007.lightsaver.lightdetector;
 
-import com.github.cc007.lightsaver.connection.UDPMessageClient;
-import com.github.cc007.lightsaver.connection.UDPMessageTypes;
-import com.github.cc007.lightsaver.connection.UDPMessage;
+import com.github.cc007.lightsaver.udpmessage.UDPMessageClient;
+import com.github.cc007.lightsaver.udpmessage.UDPMessageTypes;
+import com.github.cc007.lightsaver.udpmessage.UDPMessage;
 import java.nio.ByteBuffer;
 import java.util.Random;
 import java.util.logging.Level;

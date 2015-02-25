@@ -5,7 +5,7 @@
  */
 package com.github.cc007.lightsaver.lightdetector;
 
-import com.github.cc007.lightsaver.connection.UDPMessage;
+import com.github.cc007.lightsaver.udpmessage.UDPMessage;
 
 /**
  *
