@@ -38,10 +38,10 @@ public class UDPMessageServer {
                         break;
                     case UDPMessageTypes.PASSAGE_DETECTOR_MSG:
                         // it's a Passage detector value message
-                        m = new PassageDetectorMessage(UDPMessageTypes.LIGHT_DETECTOR_MSG, ByteBuffer.wrap(mBuffer).getInt(4), ByteBuffer.wrap(mBuffer).get(8) != 0);
+                        m = new PassageDetectorMessage(UDPMessageTypes.LIGHT_DETECTOR_MSG, ByteBuffer.wrap(mBuffer).getInt(4));
 
                         //print the info
-                        System.out.println("Detected passage from client " + ((PassageDetectorMessage)m).getClientId() + ": " + ((PassageDetectorMessage)m).isDetected());
+                        System.out.println("Detected passage from client " + ((PassageDetectorMessage)m).getClientId());
                         break;
                     default:
                         System.err.println("Unknown message type found: " + ByteBuffer.wrap(mBuffer).getInt(0));

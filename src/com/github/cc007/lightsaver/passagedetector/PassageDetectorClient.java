@@ -10,6 +10,12 @@ public class PassageDetectorClient extends UDPMessageClient {
 
     protected int clientId;
 
+    @Override
+    protected void doBefore() {
+        super.doBefore();
+        send = detectPassage();
+    }
+
     public PassageDetectorClient(int clientId) {
         super("Passage detector #" + Integer.toString(clientId));
         this.clientId = clientId;
@@ -22,17 +28,17 @@ public class PassageDetectorClient extends UDPMessageClient {
 
     @Override
     protected UDPMessage createMessage() {
-        return new PassageDetectorMessage(UDPMessageTypes.PASSAGE_DETECTOR_MSG, clientId, detectPassage());
+        return new PassageDetectorMessage(UDPMessageTypes.PASSAGE_DETECTOR_MSG, clientId);
     }
 
     @Override
     protected byte[] writeToBuffer() {
-        return ByteBuffer.allocate(9).putInt(0, m.getMsgType()).putInt(4, ((PassageDetectorMessage) m).getClientId()).put(8, (byte)(((PassageDetectorMessage) m).isDetected()?1:0)).array();
+        return ByteBuffer.allocate(9).putInt(0, m.getMsgType()).putInt(4, ((PassageDetectorMessage) m).getClientId()).array();
     }
 
     @Override
     protected int getMessageSize() {
-        return 9;
+        return 8;
     }
 
     @Override

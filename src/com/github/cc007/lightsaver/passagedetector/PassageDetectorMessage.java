@@ -14,21 +14,14 @@ import com.github.cc007.lightsaver.udpmessage.UDPMessage;
 public class PassageDetectorMessage extends UDPMessage {
 
     private final int clientId;
-    private final boolean detected;
 
-    public PassageDetectorMessage(int msgType, int clientId, boolean detected) {
+    public PassageDetectorMessage(int msgType, int clientId) {
         super(msgType);
         this.clientId = clientId;
-        this.detected = detected;
     }
 
     public int getClientId() {
         return clientId;
     }
-
-    public boolean isDetected() {
-        return detected;
-    }
-
 
 }
