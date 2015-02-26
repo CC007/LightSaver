@@ -21,20 +21,18 @@ public abstract class UDPMessageClient extends Thread {
     private static final String SERVER_ADDRESS = "localhost";
 
     protected UDPMessage m;
+    protected boolean send;
 
     private byte[] mBuffer;
     private DatagramSocket s = null;
 
     public UDPMessageClient() {
-        init();
+        this.send = true;
     }
 
     public UDPMessageClient(String name) {
-        super(name);
-        init();
-    }
-
-    protected void init() {
+        this();
+        setName(name);
     }
 
     protected void doBefore() {
@@ -55,21 +53,23 @@ public abstract class UDPMessageClient extends Thread {
             try {
                 // things to be done before creating the message
                 doBefore();
+                
+                if (send) {
+                    // create the message
+                    m = createMessage();
 
-                // create the message
-                m = createMessage();
+                    //write to buffer
+                    mBuffer = writeToBuffer();
 
-                //write to buffer
-                mBuffer = writeToBuffer();
+                    // connection part
+                    s = new DatagramSocket();
+                    InetAddress lightDetectorServer = InetAddress.getByName(SERVER_ADDRESS);
 
-                // connection part
-                s = new DatagramSocket();
-                InetAddress lightDetectorServer = InetAddress.getByName(SERVER_ADDRESS);
-
-                // send message
-                DatagramPacket ldmPacket = new DatagramPacket(mBuffer, getMessageSize(), lightDetectorServer, UDPMessageServer.SERVER_PORT);
-                s.send(ldmPacket);
-
+                    // send message
+                    DatagramPacket ldmPacket = new DatagramPacket(mBuffer, getMessageSize(), lightDetectorServer, UDPMessageServer.SERVER_PORT);
+                    s.send(ldmPacket);
+                }
+                
                 // things to be done after sending the message
                 doAfter();
             } catch (SocketException e) {

@@ -1,6 +1,7 @@
 package com.github.cc007.lightsaver.udpmessage;
 
 import com.github.cc007.lightsaver.lightdetector.LightDetectorMessage;
+import com.github.cc007.lightsaver.passagedetector.PassageDetectorMessage;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -12,7 +13,7 @@ public class UDPMessageServer {
     public static final int SERVER_PORT = 7376;
 
     private static DatagramSocket s = null;
-    private static LightDetectorMessage m;
+    private static UDPMessage m;
 
     public static void main(String[] args) {
         try {
@@ -31,14 +32,20 @@ public class UDPMessageServer {
                     case UDPMessageTypes.LIGHT_DETECTOR_MSG:
                         // it's a Light detector value message
                         m = new LightDetectorMessage(UDPMessageTypes.LIGHT_DETECTOR_MSG, ByteBuffer.wrap(mBuffer).getInt(4), ByteBuffer.wrap(mBuffer).getInt(8));
-                        
+
                         //print the info
-                        System.out.println("Value from client " + m.getClientId() + ": " + m.getValue());
+                        System.out.println("Value from client " + ((LightDetectorMessage)m).getClientId() + ": " + ((LightDetectorMessage)m).getValue());
+                        break;
+                    case UDPMessageTypes.PASSAGE_DETECTOR_MSG:
+                        // it's a Passage detector value message
+                        m = new PassageDetectorMessage(UDPMessageTypes.LIGHT_DETECTOR_MSG, ByteBuffer.wrap(mBuffer).getInt(4), ByteBuffer.wrap(mBuffer).get(8) != 0);
+
+                        //print the info
+                        System.out.println("Detected passage from client " + ((PassageDetectorMessage)m).getClientId() + ": " + ((PassageDetectorMessage)m).isDetected());
                         break;
                     default:
-                        System.err.println("Unknown message type found: " + ByteBuffer.wrap(mBuffer).getInt(0) );
+                        System.err.println("Unknown message type found: " + ByteBuffer.wrap(mBuffer).getInt(0));
                 }
-                
 
             }
         } catch (SocketException e) {

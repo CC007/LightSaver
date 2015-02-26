@@ -15,4 +15,6 @@ public interface UDPMessageTypes {
     
     // put here the type representation
     public static final int LIGHT_DETECTOR_MSG = 1000;
+    
+    public static final int PASSAGE_DETECTOR_MSG = 2000;
 }

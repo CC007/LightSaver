@@ -1,47 +1,45 @@
-package com.github.cc007.lightsaver.lightdetector;
+package com.github.cc007.lightsaver.passagedetector;
 
 import com.github.cc007.lightsaver.udpmessage.UDPMessageClient;
 import com.github.cc007.lightsaver.udpmessage.UDPMessageTypes;
 import com.github.cc007.lightsaver.udpmessage.UDPMessage;
 import java.nio.ByteBuffer;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class LightDetectorClient extends UDPMessageClient {
+public class PassageDetectorClient extends UDPMessageClient {
 
     protected int clientId;
 
-    public LightDetectorClient(int clientId) {
-        super("Light detector #" + Integer.toString(clientId));
+    public PassageDetectorClient(int clientId) {
+        super("Passage detector #" + Integer.toString(clientId));
         this.clientId = clientId;
     }
 
-    private static int detectLight() {
+    private static boolean detectPassage() {
         Random r = new Random(System.currentTimeMillis());
-        return r.nextInt(100); //TODO really detect light
+        return r.nextBoolean(); //TODO really detect passage
     }
 
     @Override
     protected UDPMessage createMessage() {
-        return new LightDetectorMessage(UDPMessageTypes.LIGHT_DETECTOR_MSG, clientId, detectLight());
+        return new PassageDetectorMessage(UDPMessageTypes.PASSAGE_DETECTOR_MSG, clientId, detectPassage());
     }
 
     @Override
     protected byte[] writeToBuffer() {
-        return ByteBuffer.allocate(12).putInt(0, m.getMsgType()).putInt(4, ((LightDetectorMessage) m).getClientId()).putInt(8, ((LightDetectorMessage) m).getValue()).array();
+        return ByteBuffer.allocate(9).putInt(0, m.getMsgType()).putInt(4, ((PassageDetectorMessage) m).getClientId()).put(8, (byte)(((PassageDetectorMessage) m).isDetected()?1:0)).array();
     }
 
     @Override
     protected int getMessageSize() {
-        return 12;
+        return 9;
     }
 
     @Override
     protected void doAfter() {
         try {
             //wait 5 seconds
-            Thread.sleep(10000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
                 e.printStackTrace();
         }
