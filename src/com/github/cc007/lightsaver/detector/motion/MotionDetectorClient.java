@@ -13,7 +13,7 @@ public class MotionDetectorClient extends UDPMessageClient {
     @Override
     protected void doBefore() {
         super.doBefore();
-        send = detectPassage();
+        send = detectMotion();
     }
 
     public MotionDetectorClient(int clientId) {
@@ -21,14 +21,14 @@ public class MotionDetectorClient extends UDPMessageClient {
         this.clientId = clientId;
     }
 
-    private static boolean detectPassage() {
+    private static boolean detectMotion() {
         Random r = new Random(System.currentTimeMillis());
         return r.nextBoolean(); //TODO really detect passage
     }
 
     @Override
     protected Message createMessage() {
-        return new MotionDetectorMessage(MessageTypes.PASSAGE_DETECTOR_MSG, clientId);
+        return new MotionDetectorMessage(MessageTypes.MOTION_DETECTOR_MSG, clientId);
     }
 
     @Override
