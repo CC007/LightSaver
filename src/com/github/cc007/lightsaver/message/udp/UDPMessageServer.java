@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.udpmessage;
+package com.github.cc007.lightsaver.message.udp;
 
 import com.github.cc007.lightsaver.message.MessageTypes;
 import com.github.cc007.lightsaver.message.Message;

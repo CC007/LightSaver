@@ -1,6 +1,6 @@
 package com.github.cc007.lightsaver.passagedetector;
 
-import com.github.cc007.lightsaver.udpmessage.UDPMessageClient;
+import com.github.cc007.lightsaver.message.udp.UDPMessageClient;
 import com.github.cc007.lightsaver.message.MessageTypes;
 import com.github.cc007.lightsaver.message.Message;
 import java.nio.ByteBuffer;

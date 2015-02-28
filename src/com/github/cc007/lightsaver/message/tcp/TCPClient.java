@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.tcpmessage;
+package com.github.cc007.lightsaver.message.tcp;
 
 import com.github.cc007.lightsaver.templates.hello.*;
 import java.io.*;
