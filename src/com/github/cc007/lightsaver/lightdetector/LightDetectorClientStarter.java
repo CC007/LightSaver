@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.cc007.lightsaver.passagedetector;
+package com.github.cc007.lightsaver.lightdetector;
 
 import java.util.Random;
 
@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author Rik
  */
-public class PassageDetectionClientStarter {
+public class LightDetectorClientStarter {
 
     /**
      * @param args the command line arguments
@@ -19,7 +19,7 @@ public class PassageDetectionClientStarter {
     public static void main(String[] args) {
         Random r = new Random(System.currentTimeMillis());
         int clientId = r.nextInt(1000); //TODO make client id unique
-        PassageDetectorClient ldc = new  PassageDetectorClient(clientId);
+        LightDetectorClient ldc = new LightDetectorClient(clientId);
         ldc.start();
     }
     

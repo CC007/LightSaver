@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author Rik
  */
-public class MotionDetectionClientStarter {
+public class MotionDetectorClientStarter {
 
     /**
      * @param args the command line arguments
