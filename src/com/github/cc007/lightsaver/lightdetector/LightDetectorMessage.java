@@ -5,13 +5,13 @@
  */
 package com.github.cc007.lightsaver.lightdetector;
 
-import com.github.cc007.lightsaver.udpmessage.UDPMessage;
+import com.github.cc007.lightsaver.message.Message;
 
 /**
  *
  * @author Rik
  */
-public class LightDetectorMessage extends UDPMessage {
+public class LightDetectorMessage extends Message {
 
     private final int clientId;
     private final int value;

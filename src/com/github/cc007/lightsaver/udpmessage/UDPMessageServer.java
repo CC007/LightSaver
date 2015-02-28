@@ -1,5 +1,7 @@
 package com.github.cc007.lightsaver.udpmessage;
 
+import com.github.cc007.lightsaver.message.MessageTypes;
+import com.github.cc007.lightsaver.message.Message;
 import com.github.cc007.lightsaver.lightdetector.LightDetectorMessage;
 import com.github.cc007.lightsaver.passagedetector.PassageDetectorMessage;
 import java.io.IOException;
@@ -13,7 +15,7 @@ public class UDPMessageServer {
     public static final int SERVER_PORT = 7376;
 
     private static DatagramSocket s = null;
-    private static UDPMessage m;
+    private static Message m;
 
     public static void main(String[] args) {
         try {
@@ -23,22 +25,22 @@ public class UDPMessageServer {
             //allocate the buffer array
             while (true) {
                 // receive message
-                byte[] mBuffer = new byte[UDPMessageTypes.MAX_MSG_SIZE];
+                byte[] mBuffer = new byte[MessageTypes.MAX_MSG_SIZE];
                 DatagramPacket mPacket = new DatagramPacket(mBuffer, mBuffer.length);
                 s.receive(mPacket);
 
                 // construct message object from message
                 switch (ByteBuffer.wrap(mBuffer).getInt(0)) {
-                    case UDPMessageTypes.LIGHT_DETECTOR_MSG:
+                    case MessageTypes.LIGHT_DETECTOR_MSG:
                         // it's a Light detector value message
-                        m = new LightDetectorMessage(UDPMessageTypes.LIGHT_DETECTOR_MSG, ByteBuffer.wrap(mBuffer).getInt(4), ByteBuffer.wrap(mBuffer).getInt(8));
+                        m = new LightDetectorMessage(MessageTypes.LIGHT_DETECTOR_MSG, ByteBuffer.wrap(mBuffer).getInt(4), ByteBuffer.wrap(mBuffer).getInt(8));
 
                         //print the info
                         System.out.println("Value from client " + ((LightDetectorMessage)m).getClientId() + ": " + ((LightDetectorMessage)m).getValue());
                         break;
-                    case UDPMessageTypes.PASSAGE_DETECTOR_MSG:
+                    case MessageTypes.PASSAGE_DETECTOR_MSG:
                         // it's a Passage detector value message
-                        m = new PassageDetectorMessage(UDPMessageTypes.LIGHT_DETECTOR_MSG, ByteBuffer.wrap(mBuffer).getInt(4));
+                        m = new PassageDetectorMessage(MessageTypes.LIGHT_DETECTOR_MSG, ByteBuffer.wrap(mBuffer).getInt(4));
 
                         //print the info
                         System.out.println("Detected passage from client " + ((PassageDetectorMessage)m).getClientId());

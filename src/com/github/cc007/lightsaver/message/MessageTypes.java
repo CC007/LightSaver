@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.cc007.lightsaver.udpmessage;
+package com.github.cc007.lightsaver.message;
 
 /**
  *
  * @author Rik
  */
-public interface UDPMessageTypes {
+public interface MessageTypes {
     // declare the max size of all message types below
     public static final int MAX_MSG_SIZE = 12;
     

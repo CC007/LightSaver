@@ -1,8 +1,8 @@
 package com.github.cc007.lightsaver.passagedetector;
 
 import com.github.cc007.lightsaver.udpmessage.UDPMessageClient;
-import com.github.cc007.lightsaver.udpmessage.UDPMessageTypes;
-import com.github.cc007.lightsaver.udpmessage.UDPMessage;
+import com.github.cc007.lightsaver.message.MessageTypes;
+import com.github.cc007.lightsaver.message.Message;
 import java.nio.ByteBuffer;
 import java.util.Random;
 
@@ -27,8 +27,8 @@ public class PassageDetectorClient extends UDPMessageClient {
     }
 
     @Override
-    protected UDPMessage createMessage() {
-        return new PassageDetectorMessage(UDPMessageTypes.PASSAGE_DETECTOR_MSG, clientId);
+    protected Message createMessage() {
+        return new PassageDetectorMessage(MessageTypes.PASSAGE_DETECTOR_MSG, clientId);
     }
 
     @Override

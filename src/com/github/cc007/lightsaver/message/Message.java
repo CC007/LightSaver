@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.cc007.lightsaver.udpmessage;
+package com.github.cc007.lightsaver.message;
 
 import java.io.Serializable;
 
@@ -11,11 +11,11 @@ import java.io.Serializable;
  *
  * @author Rik
  */
-public abstract class UDPMessage implements Serializable {
+public abstract class Message implements Serializable {
 
     private final int msgType;
 
-    public UDPMessage(int msgType) {
+    public Message(int msgType) {
         this.msgType = msgType;
     }
 

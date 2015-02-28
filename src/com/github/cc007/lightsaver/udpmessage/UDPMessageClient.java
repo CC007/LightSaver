@@ -5,6 +5,7 @@
  */
 package com.github.cc007.lightsaver.udpmessage;
 
+import com.github.cc007.lightsaver.message.Message;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -20,7 +21,7 @@ public abstract class UDPMessageClient extends Thread {
 
     private static final String SERVER_ADDRESS = "localhost";
 
-    protected UDPMessage m;
+    protected Message m;
     protected boolean send;
 
     private byte[] mBuffer;
@@ -38,7 +39,7 @@ public abstract class UDPMessageClient extends Thread {
     protected void doBefore() {
     }
 
-    protected abstract UDPMessage createMessage();
+    protected abstract Message createMessage();
 
     protected abstract byte[] writeToBuffer();
 

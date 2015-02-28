@@ -1,8 +1,8 @@
 package com.github.cc007.lightsaver.lightdetector;
 
 import com.github.cc007.lightsaver.udpmessage.UDPMessageClient;
-import com.github.cc007.lightsaver.udpmessage.UDPMessageTypes;
-import com.github.cc007.lightsaver.udpmessage.UDPMessage;
+import com.github.cc007.lightsaver.message.MessageTypes;
+import com.github.cc007.lightsaver.message.Message;
 import java.nio.ByteBuffer;
 import java.util.Random;
 import java.util.logging.Level;
@@ -23,8 +23,8 @@ public class LightDetectorClient extends UDPMessageClient {
     }
 
     @Override
-    protected UDPMessage createMessage() {
-        return new LightDetectorMessage(UDPMessageTypes.LIGHT_DETECTOR_MSG, clientId, detectLight());
+    protected Message createMessage() {
+        return new LightDetectorMessage(MessageTypes.LIGHT_DETECTOR_MSG, clientId, detectLight());
     }
 
     @Override

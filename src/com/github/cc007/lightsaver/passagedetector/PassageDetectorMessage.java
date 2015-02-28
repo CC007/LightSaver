@@ -5,13 +5,13 @@
  */
 package com.github.cc007.lightsaver.passagedetector;
 
-import com.github.cc007.lightsaver.udpmessage.UDPMessage;
+import com.github.cc007.lightsaver.message.Message;
 
 /**
  *
  * @author Rik
  */
-public class PassageDetectorMessage extends UDPMessage {
+public class PassageDetectorMessage extends Message {
 
     private final int clientId;
 
