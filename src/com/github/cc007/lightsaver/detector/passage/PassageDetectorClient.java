@@ -10,12 +10,6 @@ public class PassageDetectorClient extends UDPMessageClient {
 
     protected int clientId;
 
-    @Override
-    protected void doBefore() {
-        super.doBefore();
-        send = detectPassage();
-    }
-
     public PassageDetectorClient(int clientId) {
         super("Passage detector #" + Integer.toString(clientId));
         this.clientId = clientId;
@@ -24,6 +18,12 @@ public class PassageDetectorClient extends UDPMessageClient {
     private static boolean detectPassage() {
         Random r = new Random(System.currentTimeMillis());
         return r.nextBoolean(); //TODO really detect passage
+    }
+
+    @Override
+    protected void doBefore() {
+        super.doBefore();
+        send = detectPassage();
     }
 
     @Override
