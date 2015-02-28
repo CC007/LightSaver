@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.cc007.lightsaver.motiondetector;
+package com.github.cc007.lightsaver.detector.motion;
 
 import java.util.Random;
 

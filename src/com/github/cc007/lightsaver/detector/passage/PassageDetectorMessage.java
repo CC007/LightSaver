@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.cc007.lightsaver.passagedetector;
+package com.github.cc007.lightsaver.detector.passage;
 
 import com.github.cc007.lightsaver.message.Message;
 

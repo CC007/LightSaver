@@ -2,8 +2,8 @@ package com.github.cc007.lightsaver.message.udp;
 
 import com.github.cc007.lightsaver.message.MessageTypes;
 import com.github.cc007.lightsaver.message.Message;
-import com.github.cc007.lightsaver.lightdetector.LightDetectorMessage;
-import com.github.cc007.lightsaver.passagedetector.PassageDetectorMessage;
+import com.github.cc007.lightsaver.detector.light.LightDetectorMessage;
+import com.github.cc007.lightsaver.detector.passage.PassageDetectorMessage;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

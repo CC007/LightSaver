@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.passagedetector;
+package com.github.cc007.lightsaver.detector.passage;
 
 import com.github.cc007.lightsaver.message.udp.UDPMessageClient;
 import com.github.cc007.lightsaver.message.MessageTypes;
