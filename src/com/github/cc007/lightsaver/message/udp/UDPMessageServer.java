@@ -10,6 +10,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.nio.ByteBuffer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UDPMessageServer {
 
@@ -58,10 +60,10 @@ public class UDPMessageServer {
                 }
 
             }
-        } catch (SocketException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (SocketException ex) {
+            Logger.getLogger(UDPMessageServer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UDPMessageServer.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (s != null) {
                 s.close();

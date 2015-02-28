@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.cc007.lightsaver.message.udp;
+package com.github.cc007.lightsaver.message.tcp;
 
 import com.github.cc007.lightsaver.message.Message;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
+import java.net.Socket;
 import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,21 +18,24 @@ import java.util.logging.Logger;
  *
  * @author Rik
  */
-public abstract class UDPMessageClient extends Thread {
+public abstract class TCPMessageClient extends Thread {
 
     private static final String SERVER_ADDRESS = "localhost";
+    private static final int SERVER_PORT = 1337;
 
     protected Message m;
     protected boolean send;
 
+    private DataOutputStream out;
+    private DataInputStream in;
     private byte[] mBuffer;
-    private DatagramSocket s = null;
+    private Socket s = null;
 
-    public UDPMessageClient() {
+    public TCPMessageClient() {
         this.send = true;
     }
 
-    public UDPMessageClient(String name) {
+    public TCPMessageClient(String name) {
         this();
         setName(name);
     }
@@ -46,8 +47,6 @@ public abstract class UDPMessageClient extends Thread {
 
     protected abstract byte[] writeToBuffer();
 
-    protected abstract int getMessageSize();
-
     protected void doAfter() {
     }
 
@@ -57,7 +56,7 @@ public abstract class UDPMessageClient extends Thread {
             try {
                 // things to be done before creating the message
                 doBefore();
-                
+
                 if (send) {
                     // create the message
                     m = createMessage();
@@ -65,25 +64,28 @@ public abstract class UDPMessageClient extends Thread {
                     //write to buffer
                     mBuffer = writeToBuffer();
 
-                    // connection part
-                    s = new DatagramSocket();
-                    InetAddress lightDetectorServer = InetAddress.getByName(SERVER_ADDRESS);
+                    //connection part
+                    s = new Socket(SERVER_ADDRESS, SERVER_PORT);
+                    in = new DataInputStream(s.getInputStream());
+                    out = new DataOutputStream(s.getOutputStream());
 
                     // send message
-                    DatagramPacket ldmPacket = new DatagramPacket(mBuffer, getMessageSize(), lightDetectorServer, UDPMessageServer.SERVER_PORT);
-                    s.send(ldmPacket);
+                    out.write(mBuffer);
                 }
-                
+
                 // things to be done after sending the message
                 doAfter();
-            } catch (SocketException ex) {
-                Logger.getLogger(UDPMessageClient.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnknownHostException ex) {
-                Logger.getLogger(UDPMessageClient.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                Logger.getLogger(UDPMessageClient.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+                Logger.getLogger(TCPMessageClient.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (s != null) {
+                    try {
+                        s.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(TCPMessageClient.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                }
+            }
         }
     }
-
 }

@@ -5,6 +5,8 @@ import com.github.cc007.lightsaver.message.MessageTypes;
 import com.github.cc007.lightsaver.message.Message;
 import java.nio.ByteBuffer;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MotionDetectorClient extends UDPMessageClient {
 
@@ -46,9 +48,9 @@ public class MotionDetectorClient extends UDPMessageClient {
         try {
             //wait 5 seconds
             Thread.sleep(1000);
-        } catch (InterruptedException e) {
-                e.printStackTrace();
-        }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MotionDetectorClient.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
 }

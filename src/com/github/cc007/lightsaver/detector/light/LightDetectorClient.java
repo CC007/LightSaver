@@ -42,9 +42,9 @@ public class LightDetectorClient extends UDPMessageClient {
         try {
             //wait 5 seconds
             Thread.sleep(10000);
-        } catch (InterruptedException e) {
-                e.printStackTrace();
-        }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(LightDetectorClient.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
 }
