@@ -1,4 +1,4 @@
-package com.github.cc007.lightsaver.passagedetector;
+package com.github.cc007.lightsaver.motiondetector;
 
 import com.github.cc007.lightsaver.message.udp.UDPMessageClient;
 import com.github.cc007.lightsaver.message.MessageTypes;
@@ -6,7 +6,7 @@ import com.github.cc007.lightsaver.message.Message;
 import java.nio.ByteBuffer;
 import java.util.Random;
 
-public class PassageDetectorClient extends UDPMessageClient {
+public class MotionDetectorClient extends UDPMessageClient {
 
     protected int clientId;
 
@@ -16,7 +16,7 @@ public class PassageDetectorClient extends UDPMessageClient {
         send = detectPassage();
     }
 
-    public PassageDetectorClient(int clientId) {
+    public MotionDetectorClient(int clientId) {
         super("Passage detector #" + Integer.toString(clientId));
         this.clientId = clientId;
     }
@@ -28,12 +28,12 @@ public class PassageDetectorClient extends UDPMessageClient {
 
     @Override
     protected Message createMessage() {
-        return new PassageDetectorMessage(MessageTypes.PASSAGE_DETECTOR_MSG, clientId);
+        return new MotionDetectorMessage(MessageTypes.PASSAGE_DETECTOR_MSG, clientId);
     }
 
     @Override
     protected byte[] writeToBuffer() {
-        return ByteBuffer.allocate(8).putInt(0, m.getMsgType()).putInt(4, ((PassageDetectorMessage) m).getClientId()).array();
+        return ByteBuffer.allocate(8).putInt(0, m.getMsgType()).putInt(4, ((MotionDetectorMessage) m).getClientId()).array();
     }
 
     @Override
