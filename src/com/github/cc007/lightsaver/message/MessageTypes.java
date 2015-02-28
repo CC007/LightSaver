@@ -14,7 +14,12 @@ public interface MessageTypes {
     public static final int MAX_MSG_SIZE = 12;
     
     // put here the type representation
-    public static final int LIGHT_DETECTOR_MSG = 1000;
     
-    public static final int PASSAGE_DETECTOR_MSG = 2000;
+    //udp messages
+    public static final int LIGHT_DETECTOR_MSG = 1000;
+    public static final int PASSAGE_DETECTOR_MSG = 1100;
+    public static final int MOTION_DETECTOR_MSG = 1200;
+    
+    //tcpmessages
+    public static final int DOOR_DETECTOR_MSG = 2000;
 }
