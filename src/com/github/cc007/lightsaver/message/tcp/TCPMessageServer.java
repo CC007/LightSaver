@@ -1,6 +1,8 @@
 package com.github.cc007.lightsaver.message.tcp;
 
+import com.github.cc007.lightsaver.detector.door.DoorDetectorMessage;
 import com.github.cc007.lightsaver.message.Message;
+import com.github.cc007.lightsaver.message.MessageTypes;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.util.logging.Logger;
 
 public class TCPMessageServer {
 
-    static int SERVER_PORT = 7374;
+    public static int SERVER_PORT = 7374;
 
     public static void main(String[] args) {
         TCPMessageServer server = new TCPMessageServer();
@@ -56,6 +58,10 @@ public class TCPMessageServer {
             try {
                 int type = in.readInt();
                 switch (type) {
+                    case MessageTypes.DOOR_DETECTOR_MSG:
+                        m = new DoorDetectorMessage(type, in.readInt(), in.readBoolean());
+                        System.out.println("The state of door " + ((DoorDetectorMessage)m).getClientId() + " changed its state to: " + (((DoorDetectorMessage)m).isOpen()?"open":"closed"));
+                        break;
                     default:
                         System.err.println("Unknown message type found: " + type);
                 }
