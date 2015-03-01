@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.cc007.lightsaver.server;
+package com.github.cc007.lightsaver.message.udp;
+
+import com.github.cc007.lightsaver.message.Message;
 
 /**
  *
  * @author Rik
  */
-public class DetectorMessageServer {
+public interface UDPMessageProtocol {
     
+    public void processInput(byte[] buffer, Message m);
 }
