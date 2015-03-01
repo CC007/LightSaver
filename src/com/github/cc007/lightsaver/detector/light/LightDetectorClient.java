@@ -13,7 +13,7 @@ public class LightDetectorClient extends UDPMessageClient {
     protected int clientId;
 
     public LightDetectorClient(int clientId) {
-        super("Light detector #" + Integer.toString(clientId));
+        super("Light detector #" + clientId);
         this.clientId = clientId;
     }
 

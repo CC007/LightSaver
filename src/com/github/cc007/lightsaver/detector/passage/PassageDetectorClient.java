@@ -13,7 +13,7 @@ public class PassageDetectorClient extends UDPMessageClient {
     protected int clientId;
 
     public PassageDetectorClient(int clientId) {
-        super("Passage detector #" + Integer.toString(clientId));
+        super("Passage detector #" + clientId);
         this.clientId = clientId;
     }
 

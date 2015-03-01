@@ -13,7 +13,7 @@ public class MotionDetectorClient extends UDPMessageClient {
     protected int clientId;
 
     public MotionDetectorClient(int clientId) {
-        super("Passage detector #" + Integer.toString(clientId));
+        super("Passage detector #" + clientId);
         this.clientId = clientId;
     }
 
