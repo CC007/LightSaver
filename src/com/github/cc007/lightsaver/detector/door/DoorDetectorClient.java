@@ -25,6 +25,7 @@ public class DoorDetectorClient extends TCPMessageClient {
     public DoorDetectorClient(int clientId) {
         super("Door detector #" + clientId);
         this.clientId = clientId;
+        this.doorstate = false;
     }
 
     private boolean getDoorState() {
@@ -56,7 +57,7 @@ public class DoorDetectorClient extends TCPMessageClient {
     @Override
     protected void doAfter() {
         try {
-            Thread.sleep(10000);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(DoorDetectorClient.class.getName()).log(Level.SEVERE, null, ex);
         }
