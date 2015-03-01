@@ -10,6 +10,8 @@ import com.github.cc007.lightsaver.message.MessageTypes;
 import com.github.cc007.lightsaver.message.tcp.TCPMessageClient;
 import java.nio.ByteBuffer;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,5 +52,15 @@ public class DoorDetectorClient extends TCPMessageClient {
                 .put(8, ((DoorDetectorMessage) m).isOpen() ? (byte) 1 : (byte) 0)
                 .array();
     }
+
+    @Override
+    protected void doAfter() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(DoorDetectorClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
 }
