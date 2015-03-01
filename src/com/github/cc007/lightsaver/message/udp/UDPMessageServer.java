@@ -28,7 +28,7 @@ public class UDPMessageServer {
             //allocate the buffer array
             while (true) {
                 // receive message
-                byte[] mBuffer = new byte[MessageTypes.MAX_MSG_SIZE];
+                byte[] mBuffer = new byte[MessageTypes.MAX_UDP_MSG_SIZE];
                 DatagramPacket mPacket = new DatagramPacket(mBuffer, mBuffer.length);
                 s.receive(mPacket);
 
