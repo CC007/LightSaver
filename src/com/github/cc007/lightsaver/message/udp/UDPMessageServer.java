@@ -2,14 +2,10 @@ package com.github.cc007.lightsaver.message.udp;
 
 import com.github.cc007.lightsaver.message.MessageTypes;
 import com.github.cc007.lightsaver.message.Message;
-import com.github.cc007.lightsaver.detector.light.LightDetectorMessage;
-import com.github.cc007.lightsaver.detector.motion.MotionDetectorMessage;
-import com.github.cc007.lightsaver.detector.passage.PassageDetectorMessage;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
-import java.nio.ByteBuffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +15,7 @@ public class UDPMessageServer extends Thread{
 
     private static DatagramSocket s = null;
     private static Message m;
-    private UDPMessageProtocol udpmp;
+    private final UDPMessageProtocol udpmp;
 
     public UDPMessageServer(UDPMessageProtocol udpmp) {
         this.udpmp = udpmp;
