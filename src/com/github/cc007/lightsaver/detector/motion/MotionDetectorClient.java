@@ -35,7 +35,11 @@ public class MotionDetectorClient extends UDPMessageClient {
 
     @Override
     protected byte[] writeToBuffer() {
-        return ByteBuffer.allocate(8).putInt(0, m.getMsgType()).putInt(4, ((MotionDetectorMessage) m).getClientId()).array();
+        return ByteBuffer
+                .allocate(8)
+                .putInt(0, m.getMsgType())
+                .putInt(4, ((MotionDetectorMessage) m).getClientId())
+                .array();
     }
 
     @Override

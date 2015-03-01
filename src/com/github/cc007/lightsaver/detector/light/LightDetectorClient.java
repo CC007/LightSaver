@@ -29,7 +29,12 @@ public class LightDetectorClient extends UDPMessageClient {
 
     @Override
     protected byte[] writeToBuffer() {
-        return ByteBuffer.allocate(12).putInt(0, m.getMsgType()).putInt(4, ((LightDetectorMessage) m).getClientId()).putInt(8, ((LightDetectorMessage) m).getValue()).array();
+        return ByteBuffer
+                .allocate(12)
+                .putInt(0, m.getMsgType())
+                .putInt(4, ((LightDetectorMessage) m).getClientId())
+                .putInt(8, ((LightDetectorMessage) m).getValue())
+                .array();
     }
 
     @Override
