@@ -5,6 +5,8 @@
  */
 package com.github.cc007.lightsaver.server;
 
+import com.github.cc007.lightsaver.message.tcp.TCPMessageProtocol;
+import com.github.cc007.lightsaver.message.tcp.TCPMessageServer;
 import com.github.cc007.lightsaver.message.udp.UDPMessageServer;
 
 /**
@@ -18,7 +20,9 @@ public class DetectorMessageServerStarter {
      */
     public static void main(String[] args) {
         UDPMessageServer udpServer = new UDPMessageServer(new DetectorUDPMessageProtocol());
-        udpServer.start();
+        TCPMessageServer tcpServer = new TCPMessageServer(new DetectorTCPMessageProtocol());
+        //udpServer.start();
+        tcpServer.start();
     }
     
 }
