@@ -28,5 +28,5 @@ public interface MessageTypes {
     public static final int DOOR_DETECTOR_MSG = 2000;
 
     // - light state change messages
-    public static final int LIGHT_STATE_CHANGE_MSG = 2100;
+    public static final int APPLIANCE_STATE_CHANGE_MSG = 2100;
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.github.cc007.lightsaver.light;
+package com.github.cc007.lightsaver.datacontroller;
 
 import com.github.cc007.lightsaver.message.tcp.TCPMessageServer;
 
@@ -11,13 +11,13 @@ import com.github.cc007.lightsaver.message.tcp.TCPMessageServer;
  *
  * @author Rik
  */
-public class LightStateChangeServerStarter {
+public class ApplianceStateServerStarter {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TCPMessageServer tcpServer = new TCPMessageServer(new LightTCPMessageProtocol());
+        TCPMessageServer tcpServer = new TCPMessageServer(new ApplianceStateTCPMessageProtocol());
         tcpServer.start();
     }
     
